@@ -47,25 +47,34 @@ def main():
     menu_items = setupMenu()
 
     # Use list comprehensions to find menu items that are less than $4
+    menu_items_less_than_four_dollars = [item for item in menu_items if item.price < 4.0]
 
     # Print a header
     print(f'\n\nMENU ITEMS LESS THAN $4')
 
     # Print the menu items less than four dollars
+    for item in menu_items_less_than_four_dollars:
+        print(f'{item.name} - ${item.price}')
 
     # Use list comprehensions to find menu items that contain the word 'Mocha'
+    menu_items_with_mocha = [item for item in menu_items if re.search(r'\bMocha\b', item.name)]
 
     # Print a header
     print(f'\n\nMENU ITEMS CONTAINING "Mocha"')
     
     # Print the menu items that contain the word 'Mocha'
+    for item in menu_items_with_mocha:
+        print(f'{item.name} - ${item.price}')
 
     # Use list comprehensions to find seasonal menu items
+    menu_items_with_start_date = [item for item in menu_items if item.start_date is not None]
 
     # Print a header
     print(f'\n\nSEASONAL MENU ITEMS')
     
     # Use list comprehensions to find seasonal menu items
+    for item in menu_items_with_start_date:
+        print(f'{item.name} - ${item.price}, available {item.start_date.strftime("%m/%d/%Y")}')
 
 if __name__== "__main__":
   main()
